@@ -29,3 +29,10 @@ window.open = function (url, target, features) {
 }
 
 document.addEventListener('click', hookClick, { capture: true })
+window.addEventListener('resize', () => {
+  const activeElement = document.activeElement;
+  if (activeElement && (activeElement.tagName === 'INPUT' || activeElement.tagName === 'TEXTAREA')) {
+    // 让输入框滚动到可视区域
+    activeElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+});
